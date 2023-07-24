@@ -5,7 +5,7 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static com.kaatenn.Bank.FarmXp.*;
+import static com.kaatenn.Bank.Bank.*;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = MODID)
 public class ModEventListener {
@@ -13,10 +13,6 @@ public class ModEventListener {
     public static void addCreativeTab(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(bankBlock);
-            event.accept(fertilizerUseQualification);
-        }
-        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-            event.accept(coinOneYuan);
         }
     }
 }

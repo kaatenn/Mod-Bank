@@ -10,7 +10,7 @@ import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static com.kaatenn.Bank.FarmXp.*;
+import static com.kaatenn.Bank.Bank.*;
 import static net.minecraft.world.level.block.StemBlock.AGE;
 import static net.minecraft.world.level.block.StemBlock.MAX_AGE;
 

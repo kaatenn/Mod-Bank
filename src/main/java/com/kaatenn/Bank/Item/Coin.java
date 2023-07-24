@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-import static com.kaatenn.Bank.FarmXp.bankBlock;
+import static com.kaatenn.Bank.Bank.bankBlock;
 
 public class Coin extends Item {
     int amount;
