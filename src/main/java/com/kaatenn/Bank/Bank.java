@@ -1,10 +1,15 @@
 package com.kaatenn.Bank;
 
+import com.kaatenn.Bank.Capability.PlayerDeposit;
+import com.kaatenn.Bank.Capability.PlayerDepositProvider;
 import com.kaatenn.Bank.Item.Coin;
 import com.kaatenn.Bank.Item.FertilizerUseQualification;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -12,11 +17,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.minecrell.terminalconsole.MinecraftFormattingConverter;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -50,5 +58,14 @@ public class Bank {
         BLOCKS.register(bus);
         ITEMS.register(bus);
         CREATIVE_MODE_TAB.register(bus);
+        MinecraftForge.EVENT_BUS.addGenericListener(Entity.class, this::attachCapabilityToEntity);
+    }
+
+    public void attachCapabilityToEntity(AttachCapabilitiesEvent<Entity> event) {
+        if (event.getObject() instanceof Player player) {
+            if (!player.getCapability(PlayerDepositProvider.PLAYER_DEPOSIT_CAPABILITY).isPresent()) {
+                event.addCapability(new ResourceLocation(MODID, "deposit"), new PlayerDepositProvider());
+            }
+        }
     }
 }

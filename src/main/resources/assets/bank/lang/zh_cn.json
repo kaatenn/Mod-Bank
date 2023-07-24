@@ -2,5 +2,6 @@
   "item_group.bank.bank_creative_mode_tab": "银行",
   "block.bank.bank_block": "银行方块",
   "item.bank.one_yuan": "一元硬币",
-  "item.bank.fertilizer_use_qualification": "初级肥料使用资格证"
+  "item.bank.fertilizer_use_qualification": "初级肥料使用资格证",
+  "command.bank.deposit": "剩余存款：%s"
 }

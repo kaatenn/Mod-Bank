@@ -2,5 +2,6 @@
   "item_group.bank.bank_creative_mode_tab": "Bank",
   "block.bank.bank_block": "Bank Block",
   "item.bank.one_yuan": "One Yuan",
-  "item.bank.fertilizer_use_qualification": "Primary fertilizer Use Qualification"
+  "item.bank.fertilizer_use_qualification": "Primary fertilizer Use Qualification",
+  "command.bank.deposit": "deposit: %s"
 }

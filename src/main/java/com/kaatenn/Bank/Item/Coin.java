@@ -1,11 +1,12 @@
 package com.kaatenn.Bank.Item;
 
+import com.kaatenn.Bank.Capability.PlayerDeposit;
+import com.kaatenn.Bank.Capability.PlayerDepositProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -31,7 +32,7 @@ public class Coin extends Item {
         if (block == bankBlock.get()) {
             Player player = context.getPlayer();
             if (player != null) {
-                player.addItem(new ItemStack(Items.GOLD_INGOT, amount));
+                player.getCapability(PlayerDepositProvider.PLAYER_DEPOSIT_CAPABILITY).ifPresent(PlayerDeposit::increase);
                 itemStack.shrink(1);
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
