@@ -3,6 +3,9 @@ package com.kaatenn.Bank.Block;
 import com.kaatenn.Bank.Capability.PlayerFarmXpProvider;
 import com.kaatenn.Bank.Item.FertilizerUseQualification;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -13,8 +16,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 
-import static com.kaatenn.Bank.Register.ItemRegister.fertilizerUseQualification;
-import static com.kaatenn.Bank.Register.ItemRegister.juniorFertilizerUseQualification;
+import static com.kaatenn.Bank.Register.ItemRegister.FERTILIZER_USE_QUALIFICATION;
+import static com.kaatenn.Bank.Register.ItemRegister.JUNIOR_FERTILIZER_USE_QUALIFICATION;
 
 public class QualificationProviderBlock extends Block {
     public QualificationProviderBlock(Properties properties) {
@@ -37,7 +40,7 @@ public class QualificationProviderBlock extends Block {
                     farmXp -> {
                         if (farmXp.getFarmXp() >= 1) {
                             farmXp.decrease(1);
-                            player.addItem(new ItemStack(fertilizerUseQualification.get()));
+                            player.addItem(new ItemStack(FERTILIZER_USE_QUALIFICATION.get()));
                         }
                     }
             );
@@ -60,7 +63,12 @@ public class QualificationProviderBlock extends Block {
 
     private void upgradeQualification(int maxLevel, Player player) {
         switch (maxLevel) {
-            case 1 -> player.addItem(new ItemStack(juniorFertilizerUseQualification.get()));
+            case 1 -> player.addItem(new ItemStack(JUNIOR_FERTILIZER_USE_QUALIFICATION.get()));
         }
+    }
+
+    @Override
+    public void randomTick(@NotNull BlockState state, ServerLevel level, BlockPos pos, @NotNull RandomSource random) {
+        level.sendParticles(ParticleTypes.SMOKE, pos.getX() + .5, pos.getY() + 1.5, pos.getZ() + .5, 10, 0, 0, 0, 0.15);
     }
 }

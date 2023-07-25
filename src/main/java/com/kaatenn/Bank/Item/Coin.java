@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-import static com.kaatenn.Bank.Register.BlockRegister.bankBlock;
+import static com.kaatenn.Bank.Register.BlockRegister.BANK_BLOCK;
 
 public class Coin extends Item {
     int amount;
@@ -28,7 +28,7 @@ public class Coin extends Item {
         BlockState blockstate = level.getBlockState(blockpos);
         Block block = blockstate.getBlock();
         ItemStack itemStack = context.getItemInHand();
-        if (block == bankBlock.get()) {
+        if (block == BANK_BLOCK.get()) {
             Player player = context.getPlayer();
             if (player != null) {
                 player.getCapability(PlayerDepositProvider.PLAYER_DEPOSIT_CAPABILITY).ifPresent(

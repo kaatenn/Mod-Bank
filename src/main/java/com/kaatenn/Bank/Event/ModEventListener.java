@@ -6,14 +6,14 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import static com.kaatenn.Bank.Bank.MODID;
-import static com.kaatenn.Bank.Register.BlockRegister.bankBlock;
+import static com.kaatenn.Bank.Register.BlockRegister.BANK_BLOCK;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = MODID)
 public class ModEventListener {
     @SubscribeEvent
     public static void addCreativeTab(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            event.accept(bankBlock);
+            event.accept(BANK_BLOCK);
         }
     }
 }

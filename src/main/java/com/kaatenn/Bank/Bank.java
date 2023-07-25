@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
+import static com.kaatenn.Bank.Register.BlockEntityTypeRegister.BLOCK_ENTITY_TYPES;
 import static com.kaatenn.Bank.Register.BlockRegister.BLOCKS;
 import static com.kaatenn.Bank.Register.ItemRegister.ITEMS;
 import static com.kaatenn.Bank.Register.CreativeTabRegister.CREATIVE_MODE_TAB;
@@ -28,6 +29,7 @@ public class Bank {
         BLOCKS.register(bus);
         ITEMS.register(bus);
         CREATIVE_MODE_TAB.register(bus);
+        BLOCK_ENTITY_TYPES.register(bus);
         MinecraftForge.EVENT_BUS.addGenericListener(Entity.class, this::attachCapabilityToEntity);
     }
 

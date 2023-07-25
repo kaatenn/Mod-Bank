@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "bank:block/rapid_ripening_device"
+      },
+      {
+        "model": "bank:block/rapid_ripening_device",
+        "y": 90
+      },
+      {
+        "model": "bank:block/rapid_ripening_device",
+        "y": 180
+      },
+      {
+        "model": "bank:block/rapid_ripening_device",
+        "y": 270
+      }
+    ]
+  }
+}
