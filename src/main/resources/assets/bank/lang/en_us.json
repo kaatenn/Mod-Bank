@@ -1,7 +1,10 @@
 {
   "item_group.bank.bank_creative_mode_tab": "Bank",
   "block.bank.bank_block": "Bank Block",
+  "block.bank.qualification_provider_block": "Qualification Provider Block",
   "item.bank.one_yuan": "One Yuan",
   "item.bank.fertilizer_use_qualification": "Primary fertilizer Use Qualification",
-  "command.bank.deposit": "deposit: %s"
+  "item.bank.junior_fertilizer_use_qualification": "Junior fertilizer Use Qualification",
+  "command.bank.deposit": "deposit: %s",
+  "command.bank.farm_xp": "Farm XP: %s"
 }

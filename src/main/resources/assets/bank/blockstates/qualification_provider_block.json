@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "bank:block/qualification_provider_block"
+      },
+      {
+        "model": "bank:block/qualification_provider_block",
+        "y": 90
+      },
+      {
+        "model": "bank:block/qualification_provider_block",
+        "y": 180
+      },
+      {
+        "model": "bank:block/qualification_provider_block",
+        "y": 270
+      }
+    ]
+  }
+}
