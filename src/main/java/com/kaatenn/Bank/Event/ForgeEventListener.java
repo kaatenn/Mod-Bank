@@ -1,9 +1,11 @@
 package com.kaatenn.Bank.Event;
 
+import com.kaatenn.Bank.Capability.AgeProvider;
 import com.kaatenn.Bank.Capability.PlayerDepositProvider;
 import com.kaatenn.Bank.Capability.PlayerFarmXp;
 import com.kaatenn.Bank.Capability.PlayerFarmXpProvider;
 import com.kaatenn.Bank.Item.FertilizerUseQualification;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -13,6 +15,8 @@ import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.kaatenn.Bank.Bank.MODID;
 import static net.minecraft.world.level.block.StemBlock.AGE;
@@ -59,5 +63,29 @@ public class ForgeEventListener {
                 player.getCapability(PlayerFarmXpProvider.PLAYER_FARM_XP_CAPABILITY).ifPresent(PlayerFarmXp::increase);
             }
         }
+
+
+        AtomicInteger knowledge = new AtomicInteger();
+        AtomicInteger weight = new AtomicInteger();
+        AtomicInteger sleepTime = new AtomicInteger();
+        AtomicInteger memory = new AtomicInteger();
+        AtomicInteger experience = new AtomicInteger();
+        AtomicInteger pressure = new AtomicInteger();
+
+
+        player.getCapability(AgeProvider.AGE_CAPABILITY).ifPresent(age -> {
+            if (age.getAge() == 20) {
+                age.increase();
+                knowledge.getAndIncrement();
+                weight.getAndIncrement();
+                experience.getAndIncrement();
+                pressure.getAndIncrement();
+
+                sleepTime.getAndDecrement();
+                memory.getAndDecrement();
+
+                player.sendSystemMessage(Component.literal("Welcome! The age of 20"));
+            }
+        });
     }
 }

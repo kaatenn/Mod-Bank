@@ -108,7 +108,7 @@ public final class RapidRipeningDeviceEntity extends BlockEntity {
     }
 
     public void tickServer() {
-        if (level != null && level.getGameTime() % 20 == 0) {
+        if (level != null && level.getGameTime() % 5 == 0) {
             ItemStack itemsStackInSlot = items.getStackInSlot(SLOT);
             if (!itemsStackInSlot.isEmpty()) {
                 if (itemsStackInSlot.isDamageableItem()) {
