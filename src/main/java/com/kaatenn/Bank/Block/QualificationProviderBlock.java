@@ -3,9 +3,6 @@ package com.kaatenn.Bank.Block;
 import com.kaatenn.Bank.Capability.PlayerFarmXpProvider;
 import com.kaatenn.Bank.Item.FertilizerUseQualification;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -65,10 +62,5 @@ public class QualificationProviderBlock extends Block {
         switch (maxLevel) {
             case 1 -> player.addItem(new ItemStack(JUNIOR_FERTILIZER_USE_QUALIFICATION.get()));
         }
-    }
-
-    @Override
-    public void randomTick(@NotNull BlockState state, ServerLevel level, BlockPos pos, @NotNull RandomSource random) {
-        level.sendParticles(ParticleTypes.SMOKE, pos.getX() + .5, pos.getY() + 1.5, pos.getZ() + .5, 10, 0, 0, 0, 0.15);
     }
 }
