@@ -21,7 +21,7 @@ public class RapidRipeningDeviceRenderer implements BlockEntityRenderer<RapidRip
     @Override
     public void render(@NotNull RapidRipeningDeviceEntity be, float partialTicks, @NotNull PoseStack poseStack, @NotNull MultiBufferSource bufferSource, int combinedLight, int combinedOverlay) {
         be.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(items -> {
-            ItemStack stack = items.getStackInSlot(RapidRipeningDeviceEntity.SLOT);
+            ItemStack stack = items.getStackInSlot(RapidRipeningDeviceEntity.SLOT_INPUT);
             if (!stack.isEmpty()) {
                 ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
                 long millis = System.currentTimeMillis();

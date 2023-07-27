@@ -1,21 +1,12 @@
 {
   "variants": {
-    "": [
-      {
-        "model": "bank:block/rapid_ripening_device"
-      },
-      {
-        "model": "bank:block/rapid_ripening_device",
-        "y": 90
-      },
-      {
-        "model": "bank:block/rapid_ripening_device",
-        "y": 180
-      },
-      {
-        "model": "bank:block/rapid_ripening_device",
-        "y": 270
-      }
-    ]
+    "facing=north,working_state=false": { "model": "bank:block/rapid_ripening_device" },
+    "facing=east,working_state=false": { "model": "bank:block/rapid_ripening_device", "y": 90 },
+    "facing=south,working_state=false": { "model": "bank:block/rapid_ripening_device", "y": 180 },
+    "facing=west,working_state=false": { "model": "bank:block/rapid_ripening_device", "y": 270 },
+    "facing=north,working_state=true": { "model": "bank:block/rapid_ripening_device_on" },
+    "facing=east,working_state=true": { "model": "bank:block/rapid_ripening_device_on", "y": 90 },
+    "facing=south,working_state=true": { "model": "bank:block/rapid_ripening_device_on", "y": 180 },
+    "facing=west,working_state=true": { "model": "bank:block/rapid_ripening_device_on", "y": 270 }
   }
 }
