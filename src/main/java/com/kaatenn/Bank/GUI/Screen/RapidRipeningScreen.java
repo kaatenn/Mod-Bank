@@ -20,6 +20,6 @@ public class RapidRipeningScreen extends AbstractContainerScreen<RapidRipeningDe
     protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
         int relX = (this.width - this.imageWidth) / 2; // 居中处理，前者是屏幕高度
         int relY = (this.height - this.imageHeight) / 2;
-        graphics.blit(GUI, relX, relY, 0, 0, this.imageWidth, this.imageHeight); // 渲染
+        graphics.blit(GUI, relX, relY, 0, 0, 176, 166, 176, 166); // 渲染
     }
 }

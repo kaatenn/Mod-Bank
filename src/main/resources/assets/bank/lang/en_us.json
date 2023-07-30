@@ -7,5 +7,6 @@
   "item.bank.fertilizer_use_qualification": "Primary fertilizer Use Qualification",
   "item.bank.junior_fertilizer_use_qualification": "Junior fertilizer Use Qualification",
   "command.bank.deposit": "deposit: %s",
-  "command.bank.farm_xp": "Farm XP: %s"
+  "command.bank.farm_xp": "Farm XP: %s",
+  "tutorial.screen.rapid_ripening_device": "Rapid Ripening Device"
 }
