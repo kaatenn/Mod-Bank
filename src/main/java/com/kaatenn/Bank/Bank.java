@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 
 import static com.kaatenn.Bank.Register.BlockEntityTypeRegister.BLOCK_ENTITY_TYPES;
 import static com.kaatenn.Bank.Register.BlockRegister.BLOCKS;
+import static com.kaatenn.Bank.Register.GuiContainerRegister.MENU_TYPES;
 import static com.kaatenn.Bank.Register.ItemRegister.ITEMS;
 import static com.kaatenn.Bank.Register.CreativeTabRegister.CREATIVE_MODE_TAB;
 
@@ -30,6 +31,7 @@ public class Bank {
         ITEMS.register(bus);
         CREATIVE_MODE_TAB.register(bus);
         BLOCK_ENTITY_TYPES.register(bus);
+        MENU_TYPES.register(bus);
         MinecraftForge.EVENT_BUS.addGenericListener(Entity.class, this::attachCapabilityToEntity);
     }
 

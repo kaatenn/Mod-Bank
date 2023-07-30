@@ -1,12 +1,17 @@
 package com.kaatenn.Bank.Block;
 
 import com.kaatenn.Bank.BlockEntity.RapidRipeningDeviceEntity;
+import com.kaatenn.Bank.GUI.Container.RapidRipeningDeviceGuiContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -21,6 +26,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -79,18 +85,25 @@ public class RapidRipeningDeviceBlock extends BaseEntityBlock {
 
     @Override
     public @NotNull InteractionResult use(@NotNull BlockState blockState, @NotNull Level level, @NotNull BlockPos blockPos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult result) {
+        final String SCREEN_RAPID_TUTORIAL = "tutorial.screen.rapid_ripening_device"; // 该参数用于显示屏幕的名称
         if (!level.isClientSide) {
             // 不要在客户端执行这个操作！
-            ItemStack itemStack = player.getItemInHand(hand);
-            RapidRipeningDeviceEntity entity = (RapidRipeningDeviceEntity) level.getBlockEntity(blockPos);
+            BlockEntity be = level.getBlockEntity(blockPos);
+            if (be instanceof RapidRipeningDeviceEntity) {
+                MenuProvider containerProvider = new MenuProvider() {
+                    @Override
+                    public @NotNull Component getDisplayName() {
+                        return Component.translatable(SCREEN_RAPID_TUTORIAL);
+                    }
 
-            if (entity != null) {
-                if (itemStack.isEmpty() && entity.canExtractItem()) {
-                    player.setItemInHand(hand, entity.extractItem());
-                } else if(!itemStack.isEmpty() && entity.canInsertItem()) {
-                    ItemStack remainItem = entity.insertItem(itemStack);
-                    player.setItemInHand(hand, remainItem);
-                }
+                    @Override
+                    public @NotNull AbstractContainerMenu createMenu(int windowId, @NotNull Inventory inventory, @NotNull Player playerEntity) {
+                        return new RapidRipeningDeviceGuiContainer(windowId, playerEntity, blockPos);
+                    }
+                };
+                NetworkHooks.openScreen((ServerPlayer) player, containerProvider, be.getBlockPos());
+            } else {
+                throw new IllegalStateException("Our named container provider is missing!");
             }
         }
         return InteractionResult.SUCCESS;

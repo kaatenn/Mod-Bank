@@ -34,6 +34,16 @@ public final class RapidRipeningDeviceEntity extends BlockEntity {
     public static final int SLOT_OUTPUT = 0;
     public static final int SLOT_OUTPUT_COUNT = 1;
 
+    public static final int SLOT_COUNT = SLOT_INPUT_COUNT + SLOT_OUTPUT_COUNT;
+
+    public ItemStackHandler getInputItems() {
+        return inputItems;
+    }
+
+    public ItemStackHandler getOutputItems() {
+        return outputItems;
+    }
+
     private final ItemStackHandler inputItems = createItemHandler(SLOT_INPUT_COUNT);
     private final ItemStackHandler outputItems = createItemHandler(SLOT_OUTPUT_COUNT);
     private final LazyOptional<IItemHandler> itemHandler = LazyOptional.of(() -> new CombinedInvWrapper(inputItems, outputItems));
@@ -58,6 +68,7 @@ public final class RapidRipeningDeviceEntity extends BlockEntity {
     public RapidRipeningDeviceEntity(BlockPos worldPosition, BlockState blockState) {
         this(RAPID_RIPENING_DEVICE_ENTITY.get(), worldPosition, blockState);
     }
+
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
@@ -159,7 +170,7 @@ public final class RapidRipeningDeviceEntity extends BlockEntity {
                     } else {
                         BlockState updateBlock = getBlockState().setValue(ON, false);
                         level.setBlockAndUpdate(getBlockPos(), updateBlock);
-                        if (outputItems.getStackInSlot(SLOT_OUTPUT).isEmpty() && !inputItems.getStackInSlot(SLOT_INPUT).isEmpty()){
+                        if (outputItems.getStackInSlot(SLOT_OUTPUT).isEmpty() && !inputItems.getStackInSlot(SLOT_INPUT).isEmpty()) {
                             outputItems.setStackInSlot(SLOT_OUTPUT, itemsStackInSlot);
                             inputItems.setStackInSlot(SLOT_INPUT, ItemStack.EMPTY);
                         }
