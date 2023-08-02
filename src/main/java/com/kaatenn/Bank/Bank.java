@@ -1,7 +1,7 @@
 package com.kaatenn.Bank;
 
-import com.kaatenn.Bank.Capability.PlayerDepositProvider;
-import com.kaatenn.Bank.Capability.PlayerFarmXpProvider;
+import com.kaatenn.Bank.capability.PlayerDepositProvider;
+import com.kaatenn.Bank.capability.PlayerFarmXpProvider;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -12,11 +12,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-import static com.kaatenn.Bank.Register.BlockEntityTypeRegister.BLOCK_ENTITY_TYPES;
-import static com.kaatenn.Bank.Register.BlockRegister.BLOCKS;
-import static com.kaatenn.Bank.Register.GuiContainerRegister.MENU_TYPES;
-import static com.kaatenn.Bank.Register.ItemRegister.ITEMS;
-import static com.kaatenn.Bank.Register.CreativeTabRegister.CREATIVE_MODE_TAB;
+import static com.kaatenn.Bank.register.BlockEntityTypeRegister.BLOCK_ENTITY_TYPES;
+import static com.kaatenn.Bank.register.BlockRegister.BLOCKS;
+import static com.kaatenn.Bank.register.GuiContainerRegister.MENU_TYPES;
+import static com.kaatenn.Bank.register.ItemRegister.ITEMS;
+import static com.kaatenn.Bank.register.CreativeTabRegister.CREATIVE_MODE_TAB;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Bank.MODID)
